@@ -14,13 +14,15 @@ void deleteEmployee(int &num, string name[], int empid[],
 {
 	int eid;
 
-	if (num > 1) {
+	if (num > 1) 
+	{
 
 		cout << "\n Enter employee ID: "
 
 			cin >> eid;
 
-		for (int i = 0; i < num; i++) {
+		for (int i = 0; i < num; i++) 
+		{
 
 			if (empid[i] == eid)
 
@@ -28,7 +30,8 @@ void deleteEmployee(int &num, string name[], int empid[],
 
 		}
 
-		if (i == num) {
+		if (i == num) 
+		{
 			cout << "no employee exists with given empid ";
 
 			return;
@@ -36,7 +39,8 @@ void deleteEmployee(int &num, string name[], int empid[],
 
 		//Update the records after deleting the given employee
 
-		for (int k = i - 1; i < num; k++) {
+		for (int k = i - 1; i < num; k++) 
+		{
 
 			empid[k] = empid[k + 1];
 
@@ -45,7 +49,8 @@ void deleteEmployee(int &num, string name[], int empid[],
 		num = num - 1;
 
 	}
-	else {
+	else 
+	{
 
 		cout << " There is no employee information on record ." << endl;
 
