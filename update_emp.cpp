@@ -15,7 +15,8 @@ void updateEmployee(int num, string name[], int empid[],
 		{
 			int eid;
 
-			if (num > 1) {
+			if (num > 1) 
+			{
 
 				string newDept;
 
