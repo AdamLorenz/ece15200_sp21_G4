@@ -10,24 +10,50 @@
 */
 
 void deleteEmployee(int &num, string name[], int empid[],
-	string dept[], string doj[], int salary[]) {
+	string dept[], string doj[], int salary[]) 
+{
+	int eid;
 
-	int eid, loc = -1;
+	if (num > 1) 
+	{
 
-	if (num >= 1) {
-		cout << "Enter employee ID:";
-		cin >> eid;
-		// Find the location, loc, of given employee ID
-		// Your code below
+		cout << "\n Enter employee ID: "
 
-		// If employee is found, i.e. loc >= 0
-		// 1. Shift each employee's information from (loc + 1) position onward to left
-		// 2. Decrease the number of employees
-		// If not found, display no employee record exists for given eid
-		// Your code below
+			cin >> eid;
+
+		for (int i = 0; i < num; i++) 
+		{
+
+			if (empid[i] == eid)
+
+				break;
+
+		}
+
+		if (i == num) 
+		{
+			cout << "no employee exists with given empid ";
+
+			return;
+		}
+
+		//Update the records after deleting the given employee
+
+		for (int k = i - 1; i < num; k++) 
+		{
+
+			empid[k] = empid[k + 1];
+
+		}
+
+		num = num - 1;
+
 	}
-	else {
-		cout << "There is no employee information in the record." << endl;
-				
+	else 
+	{
+
+		cout << " There is no employee information on record ." << endl;
+
 	}
+
 }

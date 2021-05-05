@@ -10,21 +10,69 @@
 */
 
 void updateEmployee(int num, string name[], int empid[],
-	string dept[], string doj[], int salary[]) {
+	string dept[], string doj[], int salary[]) 
+{
+		{
+			int eid;
 
-	int eid;
+			if (num > 1) 
+			{
 
-	if (num >= 1) {
-		cout << "\nEnter employee ID: ";
-		cin >> eid;
-		// Scan empid array to find a match for given eid
-		// If a match found, then ask user to update for department and salary
-		// The user may update department, salary, or both.
-		// If not matched, display employee with given eid does not exist.
-		// Your code
+				string newDept;
 
-	}
-	else {
+				int newSalary = 0;
+
+				cout << "\n Enter employee ID: "
+					cin >> eid;
+
+				//Find if the given employee with eid exists
+
+				for (int i = 0; i < num; ) {
+					if (empid[i] == eid)
+						break;
+					i++;
+				}
+
+				if (i == num) {
+					cout << "no employee exists with given empid ";
+
+					return;
+				}
+
+				cout << "\n Enter new department: "
+
+					cin >> newDept;
+
+				cout << "\n Enter new salary: "
+
+					cin >> newSalary;
+
+				//Update the records for the given employee
+
+				if (!newDept.empty()) {
+
+					dept[i] = newDept;
+
+				}
+
+				if (!newSalary) {
+
+					salary[i] = newSalary;
+
+				}
+
+			}
+			else {
+
+				cout << " There is no employee information on record ." << endl;
+
+			}
+
+		}
+
+	
+	else 
+	{
 		cout << "There is no employee information in the record." << endl;
 	}
 }
