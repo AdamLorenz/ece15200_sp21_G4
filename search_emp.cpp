@@ -9,9 +9,72 @@
  salary: array contains employess' annual salary
 */
 
+void searchEmployee(int num, struct emp employees[]) {
+	int sch, found = 0;
 
+	if (num == 0) {
+		cout << "There is no employee information in the record." << endl;
+		return;
+	}
+
+	// Ask user choice and store it in sch
+	// Your code
+
+	cout << "Enter 0 for search by employee ID." << endl 
+		 << "Otherwise search by name will be performed." << endl;
+	cin >> sch;
+
+	// If choice is 0
+	// Ask user to input employee ID in a variable eid
+	// Scan empid to find a match for eid
+	// If a match found, display Name, Department, Start date, and Salary
+	// If not matched, display employee with given eid does not exist.
+	// Your code
+
+	string emp_name, temp, en;
+	int result_loc, eid;
+	if(sch == 0){
+		printf("\nEnter employee's ID: ");
+		cin >> eid;
+		for(int i = 0; i < num; i++){
+			if(eid == employees[i].empid){
+				found = 1;
+				printf("Name: %s\nDepartment: %s\nStart date: %s\nSalary: $%i\n", employees[i].name.c_str(), employees[i].dept.c_str(), employees[i].doj.c_str(),employees[i].salary);
+			}
+		}
+		if(found == 0){
+			printf("\nEmployee with given ID does not exist.\n");
+		}
+
+	// If choice is other than 0
+	// Ask user to input employee name in a variable emp_name
+	// Scan name to find a match for emp_name
+	// If a match found, display Employee ID, Department, Start date, and Salary
+	// If not matched, display employee with given emp_name does not exist.
+	// Your code
 	
+	}else{
+		printf("\nEnter employee's name: ");
+		cin.ignore();
+		getline(cin, emp_name);
 
+		string temp;
+		for(int i = 0; i < num; i++){
+			temp = employees[i].name;
+			if(emp_name.compare(temp) == 0){
+				found = 1;
+				printf("ID: %i\nDepartment: %s\nStart date: %s\nSalary: $%i\n", employees[i].empid, employees[i].dept.c_str(), employees[i].dept.c_str(),employees[i].salary);
+			}
+		}
+		if(found == 0){
+			printf("\nEmployee with given name does not exist.\n");
+		}
+	}
+}
+	
+// old version without structure:
+
+/*
 void searchEmployee(int num, string name[], int empid[],
 	string dept[], string doj[], int salary[]) {
 
@@ -76,7 +139,7 @@ void searchEmployee(int num, string name[], int empid[],
 		}
 	}
 }
-
+*/
 
 
 

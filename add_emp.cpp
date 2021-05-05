@@ -9,6 +9,110 @@
  salary: array contains employess' annual salary
 */
 
+
+void addEmployee(int &num, struct emp employees[]) {
+	
+	int id, loc = num;
+
+	cout << "Enter employee ID: ";
+	cin >> id;
+	
+	if(num >= 100){
+		printf("System has reached maximum capacity of employee records.");
+		return;
+	}
+
+	while(id > 99999 || id < 10000){
+		printf("ID number is outside of acceptable range of 10000 - 99999. Please try again: ");
+		cin >> id;
+	}
+
+	if (num >= 1) {
+		for (int i = 0; i < num; i++) {
+			if (id < employees[i].empid) {
+				loc = i;
+				break;
+			}				
+		}
+
+		for (int i = num - 1; i >= loc; i--) {
+			employees[i + 1] = employees[i];
+		}
+	}
+
+	employees[loc].empid = id;
+	
+	cout << "Enter employee's name: ";
+	cin.ignore();
+	getline(cin, employees[loc].name);
+	
+	cout << "Enter employee's department (case sensitive): ";
+	getline(cin, employees[loc].dept);
+
+	string departments[] = {"Marketing", "Finance", "Human Resources", "Technical"};
+
+	int flag = 0;
+	while(flag == 0){
+		for(int i = 0; i < 4; i++){
+			if(employees[loc].dept.compare(departments[i]) == 0){
+				flag = 1;
+				break;
+			}
+		}
+		if(flag == 0){
+			printf("Your entry does not match any existing department. Please try again: ");
+			getline(cin, employees[loc].dept);
+		}
+	}
+
+	cout << "Enter employee's start date: ";
+	cin >> employees[loc].doj;
+
+	int check = 1;
+	while(check == 1){
+		check = 0;
+		string temp_m, temp_d, temp_y;
+		string entry = employees[loc].doj;
+		if(entry.length() != 10){
+			check = 1;
+		}else{
+			temp_m = entry.substr(0,2);
+			//cout << temp_m << endl;
+			temp_d = entry.substr(3,2);
+			//cout << temp_d << endl;
+			temp_y = entry.substr(6,4);
+			//cout << temp_y<< endl;
+		}
+		if(entry[2] != '/' || entry[5] != '/'){
+			check = 1;
+		}
+		else if(stoi(temp_m) < 1 || stoi(temp_m) >+ 12){
+			check = 1;
+		}
+		else if(stoi(temp_d) >= 32 || stoi(temp_d) < 1){
+			check = 1;
+		}
+		if(check == 1){
+			printf("Your entry does not match the required date format. i.e. (xx/xx/xxxx). Please try again: ");
+			cin >> employees[loc].doj;
+		}
+	}
+
+	cout << "Enter employee's annual salary (without commas): ";
+	cin >> employees[loc].salary;
+
+	while(employees[loc].salary > 200000 || employees[loc].salary < 30000 ){
+		printf("\n%i does not fall in the acceptable range of 30000 - 200000. Please try again: ", employees[loc].salary);
+		cin >> employees[loc].salary;
+	}
+	
+	num = num + 1;
+}
+
+
+// old version without structure:
+
+/*
 void addEmployee(int &num, string name[], int empid[], 
 	string dept[], string doj[], int salary[]) {
 	
@@ -111,3 +215,4 @@ void addEmployee(int &num, string name[], int empid[],
 	}
 	num = num + 1;
 }
+*/
