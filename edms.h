@@ -6,24 +6,23 @@ using namespace std;
 
 /*
  num:    number of employees in the record
- name:   array contains employees' names
- empid:  array contains employees' IDs
- dept:   array contains employees' departments
- doj:    array contains employees' start date
- salary: array contains employess' annual salary
+ struct emp: an employee's information
 */
 
-void displayEmployees(int num, string name[], int empid[],
-	string dept[], string doj[], int salary[]);
+struct emp{
+	string name; // employee's name
+	int empid;   // employee's ID
+	string dept; // employee's department
+	string doj;  // employee's start date
+	int salary;  // employee's salary
+} ;
 
-void addEmployee(int &num, string name[], int empid[],
-	string dept[], string doj[], int salary[]);
+void displayEmployees(int num, struct emp []);
 
-void deleteEmployee(int &num, string name[], int empid[],
-	string dept[], string doj[], int salary[]);
+void addEmployee(int &num, struct emp []);
 
-void updateEmployee(int num, string name[], int empid[],
-	string dept[], string doj[], int salary[]);
+void deleteEmployee(int &num, struct emp []);
 
-void searchEmployee(int num, string name[], int empid[],
-	string dept[], string doj[], int salary[]);
+void updateEmployee(int num, struct emp []);
+
+void searchEmployee(int num, struct emp []);

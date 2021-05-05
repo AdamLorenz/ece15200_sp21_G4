@@ -1,16 +1,19 @@
 #include "edms.h"
 
 /*
- num:    number of employees in the record
- name:   array contains employees' names
- empid:  array contains employees' IDs
- dept:   array contains employees' departments
- doj:    array contains employees' start date
- salary: array contains employess' annual salary
+	num:    number of employees in the record
+	
+	struct emp: an employee's information
+	struct emp {
+		string name; // employee's name
+		int empid;   // employee's ID
+		string dept; // employee's department
+		string doj;  // employee's start date
+		int salary;  // employee's salary
+	};
 */
 
-void displayEmployees(int num, string name[], int empid[],
-	string dept[], string doj[], int salary[]) {
+void displayEmployees(int num, struct emp employees[]) {
 	if (num > 0) {
 		cout << left; 
 		cout << setw(7) << "ID" << setw(20) << "Employee Name" << setw(15)
@@ -18,9 +21,9 @@ void displayEmployees(int num, string name[], int empid[],
 			 << "Salary" << endl;
 
 		for (int i = 0; i < num; i++) {
-			cout << setw(7) << empid[i] << setw(20) << name[i] << setw(15)
-				<< dept[i] << setw(12) << doj[i] << setw(7)
-				<< salary[i] << endl;
+			cout << setw(7) << employees[i].empid << setw(20) << employees[i].name << setw(15)
+				 << employees[i].dept << setw(12) << employees[i].doj << setw(7)
+				 << employees[i].salary << endl;
 		}
 	}
 	else {
